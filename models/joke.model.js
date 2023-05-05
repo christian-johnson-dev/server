@@ -15,5 +15,5 @@ const JokeSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-const Show = mongoose.model("Joke", JokeSchema);
+const Joke = mongoose.model("Joke", JokeSchema);
 module.exports = Joke;

@@ -24,11 +24,7 @@ module.exports = {
 
   //*=========== READ - ONE - RANDOM ===========*//
   getRandomJoke: (req, res) => {
-    Joke.countDocuments()
-      .then((count) => {
-        const randomIndex = Math.floor(Math.random() * count);
-        return Joke.findOne().skip(randomIndex);
-      })
+    Joke.aggregate([{ $sample: { size: 1 } }])
       .then((randomJoke) => res.json(randomJoke))
       .catch((err) => res.status(400).json(err));
   },
